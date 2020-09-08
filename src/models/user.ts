@@ -5,7 +5,7 @@ import { hashPassword, comparePasswords } from '../utils/password';
 export interface UserRequestAttributes {
     name: string,
     email: string,
-    password: string
+    password: string,
 };
 
 interface UserAttributes extends UserRequestAttributes {
@@ -26,9 +26,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public comparePassword(password: string): Promise<boolean> {
       return comparePasswords(password, this.password);
     }
-     public static associate(models: any) {
-      // define association here
-    }
+     public static associate(models: any) { }
 };
 
 export const initialize = (sequelize: Sequelize) => {
@@ -40,7 +38,7 @@ export const initialize = (sequelize: Sequelize) => {
     },  
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',
