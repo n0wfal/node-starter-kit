@@ -1,0 +1,47 @@
+{
+  "name": "starter-kit",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -e ts --exec ts-node ./src/bin/www",
+    "build": "tsc && npm run cp-env && npm run cp-config",
+    "start": "node ./dist/bin/www",
+    "cp-env": "cp -r .env ./dist",
+    "cp-config": "cp -r ./src/config ./dist",
+    "clean": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "-": "0.0.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.8",
+    "@types/express-session": "^1.17.0",
+    "@types/express-validator": "^3.0.0",
+    "@types/http-errors": "^1.8.0",
+    "@types/node": "^14.6.3",
+    "@types/sequelize": "^4.28.9",
+    "@types/validator": "^13.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
