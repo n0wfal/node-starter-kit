@@ -1,12 +1,16 @@
 
-import { Model, Sequelize, DataTypes, DataType, Optional } from 'sequelize';
+import { Model, Sequelize, DataTypes, Optional } from 'sequelize';
+import { hashPassword, comparePasswords } from '../utils/password';
 
-interface UserAttributes {
-    id: number,
+export interface UserRequestAttributes {
     name: string,
     email: string,
     password: string
 };
+
+interface UserAttributes extends UserRequestAttributes {
+  id: number;
+}
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
@@ -19,7 +23,10 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
 
-    public static associate(models: any) {
+    public comparePassword(password: string): Promise<boolean> {
+      return comparePasswords(password, this.password);
+    }
+     public static associate(models: any) {
       // define association here
     }
 };
@@ -38,6 +45,12 @@ export const initialize = (sequelize: Sequelize) => {
     sequelize,
     modelName: 'User',
     underscored: true,
+    hooks: {
+      beforeCreate: async (user, options) => {
+        const hashedPassword = await hashPassword(user.password);
+        user.password = hashedPassword;
+      }
+    }
   });
   return User;
 };
