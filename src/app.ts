@@ -3,9 +3,9 @@ import express, { Request, Response, NextFunction } from 'express';
 import router from './routes/index';
 import createError, { HttpError } from 'http-errors';
 import compression from 'compression';
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import path from 'path';
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
