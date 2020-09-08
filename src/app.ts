@@ -1,9 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 
 import router from './routes/index';
 import createError, { HttpError } from 'http-errors';
-// const createError = require('http-errors');
-const express = require('express');
+import compression from 'compression';
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -18,6 +17,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression())
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(router);
