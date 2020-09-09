@@ -1,5 +1,12 @@
+/**
+ * User validation chains.
+ * @module
+ */
 import { body } from 'express-validator';
 
+/**
+ * Checks to be done before proceeding with the signup request.
+ */
 export const SIGN_UP_CHECKS = [
     body('email')
         .exists()
@@ -35,6 +42,9 @@ export const SIGN_UP_CHECKS = [
         })   
 ];
 
+/**
+ * Checks to be done before proceeding with the login request.
+ */
 export const LOGIN_CHECKS = [
     body('email')
         .exists()

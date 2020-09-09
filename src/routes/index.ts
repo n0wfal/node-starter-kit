@@ -1,3 +1,7 @@
+/**
+ * Router
+ * @module
+ */
 import express, { Request, Response, Router, Application } from 'express';
 import authRouter from './auth';
 import userRouter from './user';
@@ -11,6 +15,10 @@ router.get('/', (req: Request, res: Response) => {
   })
 });
 
+/**
+ * @description Used to register the routes with an express application.
+ * @param app Express application.
+ */
 export function register(app: Application) {
   app.use(router);
 }

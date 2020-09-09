@@ -50,6 +50,7 @@ The major frameworks, libraries and tools will be listed here.
 ├── README.md
 ├── package-lock.json
 ├── package.json
+├── dist
 ├── public
 │   ├── images
 │   ├── javascripts

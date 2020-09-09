@@ -1,3 +1,8 @@
+/**
+ * Express Application.
+ * @module
+ */
+
 import express, { Request, Response, NextFunction } from 'express';
 
 import router from './routes/index';
@@ -10,9 +15,6 @@ import errorHandler from './middlewares/error-handler';
 import passport from './middlewares/passport';
 
 const app = express();
-
-// view engine setup
-
 
 app.use(logger('tiny'));
 app.use(express.json());

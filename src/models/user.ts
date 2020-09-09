@@ -3,6 +3,7 @@ import { Model, Sequelize, DataTypes, Optional, HasOneCreateAssociationMixin } f
 import { hashPassword, comparePasswords } from '../utils/password';
 import { UserSocialMediaProfile, UserSocialMediaProfileAttributes } from './user-social-media-profiles';
 
+//Reusable user request attributes.
 export interface UserRequestAttributes {
     name: string,
     email: string,
@@ -26,14 +27,13 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     public readonly created_at!: Date;
     public readonly updated_at!: Date;
   
-    public addSocialMediaProfile!: HasOneCreateAssociationMixin<UserSocialMediaProfileAttributes>
-
     public comparePassword(password: string): Promise<boolean> {
       return comparePasswords(password, this.password);
-    }
-  public static associate(models: any) {
-    User.hasOne(models.UserSocialMediaProfiles)
-  }
+    };
+    // Model associations.
+    public static associate(models: any) {
+      User.hasOne(models.UserSocialMediaProfiles)
+    };
 };
 
 export const initialize = (sequelize: Sequelize) => {

@@ -1,7 +1,6 @@
 'use strict';
 
 import { Model, Sequelize, DataTypes, Optional } from "sequelize";
-import { User } from "./user";
 
 export interface UserSocialMediaProfileAttributes {
   id: number,

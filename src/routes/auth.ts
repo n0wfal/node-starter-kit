@@ -5,13 +5,15 @@ import models from '../models';
 import createHttpError from 'http-errors';
 import { StatusCodes } from 'http-status-codes';
 import passport from '../middlewares/passport';
-const user = models.User;
 const router: Router = express.Router();
 
+/**
+ * @description This route is used for user signup using an email and password.
+ */
 router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userDetails: UserRequestAttributes = req.body;
-    const newUser: User = await user.create(userDetails);
+    const newUser: User = await User.create(userDetails);
     return res.status(200).json({
       message: "Signup succesful"
     })
@@ -20,6 +22,9 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
   }
 }); 
 
+/**
+ * User login with email and password.
+ */
 router.post('/login', passport.authenticate('local', {
   session: false
 }), async (req: Request, res: Response, next: NextFunction) => {
@@ -34,6 +39,9 @@ router.post('/login', passport.authenticate('local', {
     }
 });
 
+/**
+ * Google auth initiator and failure callback route.
+ */
 router.get('/google', passport.authenticate('google', {
   scope: [
     'https://www.googleapis.com/auth/userinfo.profile',
@@ -41,6 +49,9 @@ router.get('/google', passport.authenticate('google', {
   ]
 }));
 
+/**
+ * Google auth success callback.
+ */
 router.get('/google/callback', passport.authenticate('google', {
   failureRedirect: '/google',
   session: false
