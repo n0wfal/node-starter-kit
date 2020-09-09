@@ -1,4 +1,4 @@
-import HttpErrors, { HttpError } from 'http-errors';
+import { HttpError } from 'http-errors';
 import { Request, Response } from 'express';
 const sendErrorProduction = (err: HttpError, res: Response): Response => 
     res.status(err.statusCode).json({
