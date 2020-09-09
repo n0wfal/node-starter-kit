@@ -17,7 +17,7 @@ sequelize = new Sequelize(config.database, config.username, config.password, con
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
-    return (file.indexOf(".") !== 0) && (file !== "index.ts");
+    return (file.indexOf(".") !== 0) && (file !== "index.ts") && (file !== 'index.js');
   })
   .forEach(function(file) {
     const modelInstance = require(path.join(__dirname, file));

@@ -5,7 +5,6 @@ import { UserSocialMediaProfile } from '../models/user-social-media-profiles';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import models from '../models';
-console.log(Object.keys(models))
 
 passport.use(new LocalStrategy({
     usernameField: 'email'
