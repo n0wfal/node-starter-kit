@@ -3,28 +3,33 @@ import { body } from 'express-validator';
 export const SIGN_UP_CHECKS = [
     body('email')
         .exists()
-        .withMessage('Email is required')
+        .withMessage('Email is required.') 
+        .bail()
         .normalizeEmail()
         .isEmail()
-        .withMessage('Email is not valid'),
+        .withMessage('Email is not valid.'),
     body('name')
         .exists()
-        .withMessage('Name is required')
-        .isAlpha()
-        .withMessage('Name is not valid'),
+        .withMessage('Name is required.'),
     body('password')
         .exists()
-        .withMessage('Password is required')
+        .withMessage('Password is required.')
+        .bail()
         .isLength({
             min: 8,
             max: 16
-        }),
+        })
+        .withMessage('Password should be alteast 8 characters.')
+        .bail()
+        .isAlphanumeric()
+        .withMessage('Password should be a combination of letters and numbers.')
+        ,
     body('confirmPassword')
         .exists()
-        .withMessage('Password confirmation is required')
+        .withMessage('Password confirmation is required.')
         .custom((value, { req }) => {
             if (value !== req.body.password) {
-                throw new Error('Password confirmation does not match password');
+                throw new Error('Password confirmation does not match password.');
             } 
             return true;
         })   

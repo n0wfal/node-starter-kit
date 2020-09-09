@@ -18,22 +18,38 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
   } catch (error) {
       return next(createHttpError(StatusCodes.INTERNAL_SERVER_ERROR, error))
   }
-
 }); 
 
 router.post('/login', passport.authenticate('local', {
   session: false
-}),
-  async (req: Request, res: Response, next: NextFunction) => {
+}), async (req: Request, res: Response, next: NextFunction) => {
     try {
       const user = req.user as User;
       return res.status(200).json({
-        email: user.email,
+        email: user!.email,
         message: "Login success"
       });
     } catch (error) {
       return next(createHttpError(StatusCodes.INTERNAL_SERVER_ERROR, error));
     }
+});
+
+router.get('/google', passport.authenticate('google', {
+  scope: [
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email'
+  ]
+}));
+
+router.get('/google/callback', passport.authenticate('google', {
+  failureRedirect: '/google',
+  session: false
+}), async (req, res) => {
+    const user = req.user as User;
+    res.status(200).json({
+      email: user!.email,
+      message: "Login success"
+  })
 });
 
 export default router;

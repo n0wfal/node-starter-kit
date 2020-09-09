@@ -13,6 +13,7 @@ const sendErrorDevelopment = (err: HttpError, res: Response): Response => res.st
 });
   
 export default (err: HttpError, req: Request, res: Response): Response => {
+    console.log(err)
     err.status = err.status || 500;
     err.statusCode = err.statusCode || 500;
     return !res.headersSent && process.env.NODE_ENV?.toLowerCase() === 'production'
