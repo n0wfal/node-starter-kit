@@ -52,52 +52,57 @@ The major frameworks, libraries and tools will be listed here.
 ```bash
 .
 ├── README.md
-├── dist
+├── lerna-debug.log
+├── lerna.json
 ├── package-lock.json
 ├── package.json
-├── public
-│   ├── images
-│   ├── javascripts
-│   └── stylesheets
-│       └── style.css
-├── sample.env
-├── src
-│   ├── @types
-│   │   └── oauth.d.ts
-│   ├── app.ts
-│   ├── bin
-│   │   └── www.ts
-│   ├── config
-│   │   ├── config.json
-│   │   ├── google-credentials.ts
-│   │   └── index.ts
-│   ├── controllers
-│   ├── middlewares
-│   │   ├── error-handler
-│   │   │   └── index.ts
-│   │   ├── passport
-│   │   │   ├── google-strategy.ts
-│   │   │   ├── index.ts
-│   │   │   └── local-strategy.ts
-│   │   └── validators
-│   │       ├── index.ts
-│   │       └── user.ts
-│   ├── migrations
-│   │   ├── create-user.ts
-│   │   └── create-user-social-media-profiles.ts
-│   ├── models
-│   │   ├── index.ts
-│   │   ├── user-social-media-profiles.ts
-│   │   └── user.ts
-│   ├── routes
-│   │   ├── auth.ts
-│   │   ├── index.ts
-│   │   └── user.ts
-│   ├── seeders
-│   └── utils
-│       ├── password.ts
-│       └── swagger.ts
-└── tsconfig.json
+├── services
+│   └── authentication
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── public
+│       │   ├── images
+│       │   ├── javascripts
+│       │   └── stylesheets
+│       │       └── style.css
+│       ├── sample.env
+│       ├── src
+│       │   ├── @types
+│       │   │   └── oauth.d.ts
+│       │   ├── app.ts
+│       │   ├── bin
+│       │   │   └── www.ts
+│       │   ├── config
+│       │   │   ├── config.json
+│       │   │   ├── google-credentials.ts
+│       │   │   └── index.ts
+│       │   ├── controllers
+│       │   ├── middlewares
+│       │   │   ├── error-handler
+│       │   │   │   └── index.ts
+│       │   │   ├── passport
+│       │   │   │   ├── google-strategy.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── local-strategy.ts
+│       │   │   └── validators
+│       │   │       ├── index.ts
+│       │   │       └── user.ts
+│       │   ├── migrations
+│       │   │   ├── create-user.ts
+│       │   │   └── create-user-social-media-profiles.ts
+│       │   ├── models
+│       │   │   ├── index.ts
+│       │   │   ├── user-social-media-profiles.ts
+│       │   │   └── user.ts
+│       │   ├── routes
+│       │   │   ├── auth.ts
+│       │   │   ├── index.ts
+│       │   │   └── user.ts
+│       │   ├── seeders
+│       │   └── utils
+│       │       ├── password.ts
+│       │       └── swagger.ts
+│       └── tsconfig.json
 ```
 
 <!-- GETTING STARTED -->
@@ -125,13 +130,9 @@ git clone https://github.com/n0wfal/node-starter-kit.git
 ```sh
 cd node-starter-kit && npm install
 ```
-3. Build the application 
+3. Build the services 
 ```sh
-npm run build
-```
-4. Start the application
-```sh
-npm run start
+lerna run build
 ```
 
 
