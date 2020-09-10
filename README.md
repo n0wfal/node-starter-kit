@@ -52,9 +52,9 @@ The major frameworks, libraries and tools will be listed here.
 ```bash
 .
 ├── README.md
+├── dist
 ├── package-lock.json
 ├── package.json
-├── dist
 ├── public
 │   ├── images
 │   ├── javascripts
@@ -72,17 +72,19 @@ The major frameworks, libraries and tools will be listed here.
 │   │   ├── google-credentials.ts
 │   │   └── index.ts
 │   ├── controllers
-│   │   └── test.ts
 │   ├── middlewares
 │   │   ├── error-handler
 │   │   │   └── index.ts
-│   │   ├── passport.ts
+│   │   ├── passport
+│   │   │   ├── google-strategy.ts
+│   │   │   ├── index.ts
+│   │   │   └── local-strategy.ts
 │   │   └── validators
 │   │       ├── index.ts
 │   │       └── user.ts
 │   ├── migrations
-│   │   ├── migration-1.ts
-│   │   └── migration-2.ts
+│   │   ├── create-user.ts
+│   │   └── create-user-social-media-profiles.ts
 │   ├── models
 │   │   ├── index.ts
 │   │   ├── user-social-media-profiles.ts
@@ -93,12 +95,9 @@ The major frameworks, libraries and tools will be listed here.
 │   │   └── user.ts
 │   ├── seeders
 │   └── utils
-│       └── password.ts
-├── tsconfig.json
-└── views
-    ├── error.jade
-    ├── index.jade
-    └── layout.jade
+│       ├── password.ts
+│       └── swagger.ts
+└── tsconfig.json
 ```
 
 <!-- GETTING STARTED -->
