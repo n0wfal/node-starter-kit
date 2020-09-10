@@ -13,6 +13,15 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import errorHandler from './middlewares/error-handler';
 import passport from './middlewares/passport';
+import Sentry from '@sentry/node';
+import { SENTRY_DSN } from './config';
+
+if (SENTRY_DSN) {
+  //Initialize sentry if the sentry DSN is set.
+  Sentry.init({
+    dsn: SENTRY_DSN
+  });
+}
 
 const app = express();
 

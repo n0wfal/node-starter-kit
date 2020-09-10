@@ -23,7 +23,7 @@
     },
     "rules": {
         "import/extensions": ["error", "never"],
-        "import/no-dynamic-require": ["error", "never"],
-        "no-console":"off"
+        "import/no-dynamic-require": ["error", "never"]
+        // "no-console":"off"
     }
 }
