@@ -22,6 +22,7 @@
   - [Prerequisites](#prerequisites)
   - [Intial Setup and Starting](#intial-setup-and-starting)
   - [Development Mode](#development-mode)
+- [API Documentation](#api-documentation)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Contact](#contact)
@@ -37,6 +38,8 @@ It comes out of the box with Sequelize configured with a bare minimum user model
 ).
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
+
+<!-- BUILT WITH -->
 ### Built With
 The major frameworks, libraries and tools will be listed here.
 * [NodeJS](https://nodejs.org/en/)
@@ -44,6 +47,7 @@ The major frameworks, libraries and tools will be listed here.
 * [Typescript](https://www.typescriptlang.org/)
 * [Sequelize](https://sequelize.org/)
 
+<!-- FOLDER STRUCTURE -->
 ## Folder Structure
 ```bash
 .
@@ -102,6 +106,8 @@ The major frameworks, libraries and tools will be listed here.
 
 Follow the steps below to get started.
 
+
+<!-- PREREQUISITES -->
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
@@ -109,6 +115,7 @@ This is an example of how to list things you need to use the software and how to
 * npm
 * PostgreSQL v12+
 
+<!-- INITIAL SETUP -->
 ### Intial Setup and Starting
 
 1. Clone the repo
@@ -127,11 +134,20 @@ npm run build
 ```sh
 npm run start
 ```
+
+
+<!-- DEV MODE -->
 ### Development Mode
 1. Start using dev script to enable hot reloading with ts-node
 ```sh
 npm run dev
 ```
+
+
+<!-- API DOCS -->
+## API Documentation
+Once the server has started visit `/api-docs` for swagger documentation for the API's.
+
 
 <!-- ROADMAP -->
 ## Roadmap
