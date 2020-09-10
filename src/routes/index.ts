@@ -10,19 +10,7 @@ import authRouter from './auth';
 import userRouter from './user';
 const router: Router = express.Router();
 
-const swaggerOptions = {
-  swaggerDefinition: {
-    openapi: "3.0.0",
-    info: {
-      version: "1.0.0",
-      title: "Node Starter",
-      description: "Node JS typescript starter kit.",
-    }
-  },
-  apis: ["./*.js", './*.ts', 'src/routes/*.ts']
-};
-
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
+const swaggerDocs = swaggerJsdoc(options);
 router.use('/auth', authRouter);
 router.use('/user', userRouter);
 router.use('/api-docs', swaggerUi.serve,)

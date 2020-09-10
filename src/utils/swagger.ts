@@ -1,8 +1,11 @@
 export const options = {
+  swaggerDefinition: {
     openapi: "3.0.0",
     info: {
-        title: "Node Starter",
-        version: "0.0.1",
-        description: "NodeJS+Typescript starter boilerplate."
+      version: "1.0.0",
+      title: "Node Starter",
+      description: "Node JS typescript starter kit.",
     }
-}
+  },
+  apis: ["./*.js", './*.ts', 'src/routes/*.ts']
+};
