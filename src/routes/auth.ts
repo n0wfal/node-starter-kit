@@ -108,7 +108,15 @@ router.get('/google', passport.authenticate('google', {
 }));
 
 /**
- * Google auth success callback.
+ * @swagger
+ * /auth/google/callback:
+ *  post:
+ *    summary: Google OAuth login callback route.
+ *    tags:
+ *      - Auth
+ *    responses:
+ *      '200':
+ *        description:  Successful login
  */
 router.get('/google/callback', passport.authenticate('google', {
   failureRedirect: '/google',
