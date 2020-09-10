@@ -1,40 +1,8 @@
-/**
- * Passport module.
- * @module
- * */
-
-import passport from 'passport';
-import { GOOGLE_CREDENTIALS } from '../config';
-import { User } from '../models/user';
-import { UserSocialMediaProfile } from '../models/user-social-media-profiles';
-import { Strategy as LocalStrategy } from 'passport-local';
+import { GOOGLE_CREDENTIALS } from '../../config';
+import { User } from '../../models/user';
+import { UserSocialMediaProfile } from '../../models/user-social-media-profiles';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import models from '../models';
-
-/**
- * Local strategy using username and password.
- */
-const localStrategy = new LocalStrategy({
-    usernameField: 'email'
-}, async (username, password, done) => {
-    try {
-        const user = await User.findOne({
-            where: {
-                email: username
-            }
-        });
-        if (!user) {
-            return done(null, false, { message: 'Incorrect username' });
-        }
-        if (!await user.comparePassword(password)) {
-            return done(null, false, { message: "Incorrect password" });
-        }
-        return done(null, user);
-    } catch (error) {
-        done(error);
-    }
-});
-
+import models from '../../models';
 
 /**
  * Oauth strategy using google.
@@ -82,8 +50,4 @@ const googleStrategy = new GoogleStrategy({
     }
 });
 
-passport
-    .use(localStrategy)
-    .use(googleStrategy);
-
-export default passport;
+export default googleStrategy;
