@@ -14,7 +14,8 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       google_id: {
         type: DataTypes.STRING
