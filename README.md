@@ -111,7 +111,6 @@ This is an example of how to list things you need to use the software and how to
 
 ### Intial Setup and Starting
 
-<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
 1. Clone the repo
 ```sh
 git clone https://github.com/n0wfal/node-starter-kit.git

@@ -8,7 +8,39 @@ import passport from '../middlewares/passport';
 const router: Router = express.Router();
 
 /**
- * @description This route is used for user signup using an email and password.
+ * @swagger
+ * /auth/signup:
+ *  post:
+ *    summary: New user signup.
+ *    tags:
+ *      - Auth
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              name:
+ *                type: string
+ *              email:
+ *                type: string
+ *              password:
+ *                type: string
+ *              confirmPassword:
+ *                type: string
+ *            example:
+ *              name: John Doe
+ *              email:  johndoe@example.com
+ *              password: 12345678
+ *              confirmPassword:  12345678
+ *    responses:
+ *      '200':
+ *        description: Successful signup
+ *      '400':
+ *        description:  Invalid user input
+ *      '500':
+ *        description:  Internal server error
  */
 router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -23,7 +55,33 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
 }); 
 
 /**
- * User login with email and password.
+ * @swagger
+ * /auth/login:
+ *  post:
+ *    summary: New user login.
+ *    tags:
+ *      - Auth
+ *    requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              email:
+ *                type: string
+ *              password:
+ *                type: string
+ *            example:
+ *              email:  johndoe@example.com
+ *              password: 12345678
+ *    responses:
+ *      '200':
+ *        description:  Successful login
+ *      '404':
+ *        description:  User with specified email not found.
+ *      '401':
+ *        description:  Invalid password
  */
 router.post('/login', passport.authenticate('local', {
   session: false
