@@ -25,7 +25,9 @@ if (SENTRY_DSN) {
 
 const app = express();
 
-app.use(logger('tiny'));
+app.use(logger('tiny', {
+  skip: () => process.env.NODE_ENV === 'test'
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
