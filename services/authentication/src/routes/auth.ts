@@ -13,7 +13,7 @@ const router: Router = express.Router();
  *  post:
  *    summary: New user signup.
  *    tags:
- *      - Auth
+ *      - Authentication
  *    requestBody:
  *      required: true
  *      content:
@@ -60,7 +60,7 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
  *  post:
  *    summary: New user login.
  *    tags:
- *      - Auth
+ *      - Authentication
  *    requestBody:
  *      required: true
  *      content:
@@ -113,7 +113,7 @@ router.get('/google', passport.authenticate('google', {
  *  post:
  *    summary: Google OAuth login callback route.
  *    tags:
- *      - Auth
+ *      - Authentication
  *    responses:
  *      '200':
  *        description:  Successful login
