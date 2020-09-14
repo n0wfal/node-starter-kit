@@ -9,7 +9,8 @@
     "cp-env": "cp -r .env ./dist",
     "cp-config": "cp -r ./src/config/config.json ./dist/config/",
     "clean": "rm -rf ./dist",
-    "clean-build": "npm run clean && npm run build"
+    "clean-build": "npm run clean && npm run build",
+    "test": "NODE_ENV=test mocha -r ts-node/register test/*.ts"
   },
   "dependencies": {
     "-": "0.0.1",
@@ -33,5 +34,10 @@
     "sequelize": "^6.3.5",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/chai-http": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.1.3"
   }
 }

@@ -1,0 +1,15 @@
+import {
+    TESTS as SIGNUP_TESTS,
+    RESPONSE_MESSAGES as SIGNUP_RESPONSE_MESSAGES
+} from './messages/signup';
+import {
+    TESTS as LOGIN_TESTS,
+    RESPONSE_MESSAGES as LOGIN_RESPONSE_MESSAGES
+} from './messages/login';
+
+export {
+    SIGNUP_TESTS,
+    SIGNUP_RESPONSE_MESSAGES,
+    LOGIN_TESTS,
+    LOGIN_RESPONSE_MESSAGES
+}
