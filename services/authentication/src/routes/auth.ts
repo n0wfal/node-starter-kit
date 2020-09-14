@@ -1,7 +1,7 @@
 import express, { Request, Response, Router, NextFunction } from 'express';
 import { User, UserRequestAttributes } from '../models/user';
 import validate, { SIGN_UP_CHECKS, LOGIN_CHECKS } from '../middlewares/validators';
-import models from '../models';
+import { LOGIN_RESPONSE_MESSAGES, SIGNUP_RESPONSE_MESSAGES } from '../utils/lang';
 import createHttpError from 'http-errors';
 import { StatusCodes } from 'http-status-codes';
 import passport from '../middlewares/passport';
@@ -47,7 +47,7 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
     const userDetails: UserRequestAttributes = req.body;
     const newUser: User = await User.create(userDetails);
     return res.status(200).json({
-      message: "Signup succesful"
+      message: SIGNUP_RESPONSE_MESSAGES.SIGNUP_SUCCESS
     })
   } catch (error) {
       return next(createHttpError(StatusCodes.INTERNAL_SERVER_ERROR, error))
@@ -83,14 +83,14 @@ router.post('/signup', SIGN_UP_CHECKS, validate, async (req: Request, res: Respo
  *      '401':
  *        description:  Invalid password
  */
-router.post('/login', passport.authenticate('local', {
+router.post('/login',LOGIN_CHECKS, validate, passport.authenticate('local', {
   session: false
 }), async (req: Request, res: Response, next: NextFunction) => {
     try {
       const user = req.user as User;
       return res.status(200).json({
         email: user!.email,
-        message: "Login success"
+        message: LOGIN_RESPONSE_MESSAGES.LOGIN_SUCCESS
       });
     } catch (error) {
       return next(createHttpError(StatusCodes.INTERNAL_SERVER_ERROR, error));
@@ -125,7 +125,7 @@ router.get('/google/callback', passport.authenticate('google', {
     const user = req.user as User;
     res.status(200).json({
       email: user!.email,
-      message: "Login success"
+      message: LOGIN_RESPONSE_MESSAGES.LOGIN_SUCCESS
   })
 });
 
