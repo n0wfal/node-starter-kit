@@ -22,6 +22,7 @@
   - [Prerequisites](#prerequisites)
   - [Intial Setup and Starting](#intial-setup-and-starting)
   - [Development Mode](#development-mode)
+  - [Tests](#tests)
 - [API Documentation](#api-documentation)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
@@ -100,9 +101,18 @@ The major frameworks, libraries and tools will be listed here.
 │       │   │   └── user.ts
 │       │   ├── seeders
 │       │   └── utils
+│       │       ├── lang.ts
+│       │       ├── messages
+│       │       │   ├── login.ts
+│       │       │   └── signup.ts
 │       │       ├── password.ts
 │       │       └── swagger.ts
+│       ├── test
+│       │   ├── constants.ts
+│       │   ├── login-spec.ts
+│       │   └── signup-spec.ts
 │       └── tsconfig.json
+└── tsconfig.json
 ```
 
 <!-- GETTING STARTED -->
@@ -141,6 +151,17 @@ lerna run build
 1. Start using dev script to enable hot reloading with ts-node
 ```sh
 npm run dev
+```
+
+<!-- TESTS -->
+### Tests
+1. To run the tests for all services
+```sh
+lerna run test
+```
+NOTE: Tests for services can be run from the respective folder using
+```sh
+npm run test
 ```
 
 
