@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon -e ts --exec ts-node ./src/bin/www",
     "build": "tsc && npm run cp-env && npm run cp-config",
-    "start": "node ./dist/bin/www",
     "cp-env": "cp -r .env ./dist",
     "cp-config": "cp -r ./src/config/config.json ./dist/config/",
     "clean": "rm -rf ./dist",
     "clean-build": "npm run clean && npm run build",
+    "dev": "nodemon -e ts --exec ts-node ./src/bin/www",
+    "start": "node ./dist/bin/www",
     "test": "NODE_ENV=test mocha -r ts-node/register test/*.ts"
   },
   "dependencies": {
